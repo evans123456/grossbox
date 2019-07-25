@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Business
+from . import models
 from leaflet.admin import LeafletGeoAdmin
 
 # Register your models here.
@@ -12,4 +12,11 @@ class BusinessAdmin(LeafletGeoAdmin):
 
 
 
-admin.site.register(Business, BusinessAdmin)
+admin.site.register(models.Business, BusinessAdmin)
+admin.site.register(models.Foodbusiness)
+admin.site.register(models.Laborbusiness)
+admin.site.register(models.AvailableFoods)
+admin.site.register(models.AvailableServices)
+
+
+
