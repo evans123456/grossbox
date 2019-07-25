@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'maps',
     'leaflet',
     'bizzzzz',
-    'accounts'
+    'accounts',
+    'bootstrap3'
     
 ]
 

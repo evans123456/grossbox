@@ -1,1 +1,17 @@
-{{form}}
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+{% load bootstrap3 %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST" >
+    <h2>Sign Up {{type}}</h2>
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        <input type="submit" value="Sign Up" class="btn btn-primary" >
+
+</form>
+
+{% endblock %}

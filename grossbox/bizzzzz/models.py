@@ -21,8 +21,8 @@ class Business(models.Model):
     location = models.PointField(srid=4326)
     objects = GeoManager()
 
-    def __unicode__(self):
-        return self.business_name
+    def __str__(self):
+        return '{}'.format(self.business_name)
 
     class Meta:
         verbose_name_plural = "Businesses" 

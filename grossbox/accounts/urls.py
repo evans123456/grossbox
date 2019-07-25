@@ -6,7 +6,10 @@ app_name="accounts"
 
 urlpatterns = [
 	url(r'^$', views.index, name = 'home'),
-    url(r'^register/$', views.register, name = 'register'),
+    url(r'^service_application/$', views.registerLaborbusiness , name = 'registerfoodsupply'),
+    url(r'^registerfoodsupply/$', views.registerFoodbusiness , name = 'registerfoodsupply'),
+    url(r'^registerbiz/$', views.registerbusiness, name = 'registerbusiness'),
+
 
 
 ]
