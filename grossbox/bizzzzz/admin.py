@@ -9,9 +9,6 @@ class BusinessAdmin(LeafletGeoAdmin):
 	list_display =('business_name','mobile_number','location')
 
 
-
-
-
 admin.site.register(models.Business, BusinessAdmin)
 admin.site.register(models.Foodbusiness)
 admin.site.register(models.Laborbusiness)

@@ -29,9 +29,8 @@ INSTALLED_APPS = [
     'maps',
     'leaflet',
     'bizzzzz',
+    'accounts'
     
-    
-
 ]
 
 MIDDLEWARE = [
