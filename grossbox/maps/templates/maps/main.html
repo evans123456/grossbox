@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+{% load leaflet_tags %}
+
+{% block head %}
+
+{% leaflet_js %}
+{% leaflet_css %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'dist/routing/leaflet-routing-machine.css'%}" >
+
+<link rel="stylesheet" type="text/css" href="{% static 'dist/groupedlayercontrols/leaflet.groupedlayercontrol.min.css'%}" >
+<style type="text/css" >#gis {width: 80%;height: 700px;}</style>
+<script type="text/javascript" src="{% static 'dist/ajax/leaflet.ajax.js'%}" ></script>
+<script type="text/javascript" src="{% static 'dist/groupedlayercontrols/leaflet.groupedlayercontrol.min.js'%}" ></script>
+<script type="text/javascript" src="{% static 'dist/routing/leaflet-routing-machine.js'%}" ></script>
+
+{% endblock %}
+
+
+
+{% block content %}
+   
+
+<script type="text/javascript">
+//these are the overlay layers
+function our_layers(map,options){
+    var osm = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png');
+    //https://wiki.openstreetmap.org/wiki/Tile_servers 
+
+    var datasets = new L.GeoJSON.AJAX("{% url 'maps:county' %}",{
+        style: function colors(feature){
+            switch(feature.properties.counties){
+                case 'WAJIR':
+                return{
+                    color: 'orange',
+                    fillOpacity: 0.8
+                };
+                break;
+                case 'ISIOLO':
+                return{
+                    color: 'grey',
+                    fillOpacity: 0.8
+                };
+                break;
+            }
+        },
+        onEachFeature: function(feature,layer){
+            layer.bindPopup(feature.properties.counties.toString()); //the part after properties is used to feature the name
+        }
+    });
+    var points = new L.GeoJSON.AJAX("{% url 'maps:incidences' %}",{
+        onEachFeature: function(feature,layer){
+            layer.bindPopup(feature.properties.name.toString());
+        }
+    });
+
+    datasets.addTo(map); // these is for counties
+    points.addTo(map);
+
+    var baseLayers = {
+        "OSM": osm,
+    }
+
+    var groupedOverlays = {
+        "Layers": {
+            "counties": datasets,
+            "incidences": points
+        }};
+
+L.control.groupedLayers(baseLayers, groupedOverlays).addTo(map);
+
+L.Routing.control({
+  waypoints: [
+    L.latLng(-0.23, 36.87),
+    L.latLng(0.23, 37.64)
+  ]
+}).addTo(map);
+
+}
+
+
+</script>
+{% leaflet_map "gis" callback="window.our_layers " %}
+
+{% endblock %}
