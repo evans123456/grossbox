@@ -2,8 +2,13 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from bizzzzz import models as bizmodel
+from leaflet.forms.widgets import LeafletWidget
+from django.contrib.gis.db import models
+
+
 
 class BusinessRegistrationForm(forms.ModelForm):
+    location = models.PointField()
     class Meta:
         model = bizmodel.Business
         fields = (
@@ -11,6 +16,7 @@ class BusinessRegistrationForm(forms.ModelForm):
             'mobile_number',
             'location',
         )
+        widgets = {'geom': LeafletWidget()}
     def save(self, commit=True):
         user = super(BusinessRegistrationForm, self).save(commit=False)
         user.business_name = self.cleaned_data['business_name']

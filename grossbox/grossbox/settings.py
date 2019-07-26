@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'leaflet',
     'bizzzzz',
     'accounts',
-    'bootstrap3'
+    'bootstrap3',
+    's_admin'
     
 ]
 
