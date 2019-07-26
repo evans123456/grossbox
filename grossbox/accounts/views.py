@@ -73,3 +73,25 @@ def registerLaborbusiness(request):
     }
     return render(request,'accounts/register.html',context)
     
+
+def registerbiker(request):
+    if request.method =='POST':
+        form = forms.BikerRegistrationForm(request.POST)
+        print('post')
+        if form.is_valid():
+            print('form is valid')
+            user = form.save(commit=False)
+            g = Group.objects.get(name="Biker")
+            g.save()
+            user.save()
+            g.user_set.add(user)
+            form.save()
+            print('form saved')
+            return redirect('/account')
+    else:
+        form = forms.BikerRegistrationForm()
+    context = {
+        'form':form,
+        'type': 'Service Business'
+    }
+    return render(request,'accounts/register.html',context)

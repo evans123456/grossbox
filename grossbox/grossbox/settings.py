@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'bizzzzz',
     'accounts',
     'bootstrap3',
-    's_admin'
+    's_admin',
+    'bikers'
     
 ]
 
