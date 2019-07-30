@@ -85,6 +85,7 @@ class FoodbusinessRegistrationForm(UserCreationForm):
 
 class BikerRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    area_of_business = PointField()
     class Meta:
         model = bikemodel.Biker
         fields = (
@@ -101,6 +102,7 @@ class BikerRegistrationForm(UserCreationForm):
             'vehiecle',
             'area_of_business'
         )
+        widgets = {'area_of_business': LeafletWidget()}
     def save(self, commit=True):
         user = super(FoodbusinessRegistrationForm, self).save(commit=False)
         user.first_name = self.cleaned_data['first_name']
