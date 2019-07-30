@@ -6,11 +6,13 @@ from bizzzzz import urls as business_urls
 from accounts import urls as accounts_urls
 from s_admin import urls as superadmin_urls
 from bikers import urls as bikers_urls
+from home import urls as home_urls
 
 
 
 urlpatterns = [
     path('super_admin/', admin.site.urls),
+    url(r'', include((home_urls,'home_urls' ) , namespace = 'homepage') ),
     url(r'maps/', include((map_urls,'map_urls' ) , namespace = 'maps') ),
     url(r'business/', include((business_urls,'business_urls' ) , namespace = 'business') ),
     url(r'accounts/', include((accounts_urls,'accounts_urls' ) , namespace = 'accounts') ),
