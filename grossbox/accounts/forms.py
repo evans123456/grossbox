@@ -5,12 +5,14 @@ from bizzzzz import models as bizmodel
 from bikers import models as bikemodel
 from leaflet.forms.widgets import LeafletWidget
 from django.contrib.gis.db import models
+from leaflet.forms.fields import PointField
+
 
 
 
 
 class BusinessRegistrationForm(forms.ModelForm):
-    location = models.PointField()
+    location = PointField()
     class Meta:
         model = bizmodel.Business
         fields = (
@@ -18,7 +20,7 @@ class BusinessRegistrationForm(forms.ModelForm):
             'mobile_number',
             'location',
         )
-        widgets = {'geom': LeafletWidget()}
+        widgets = {'location': LeafletWidget()}
     def save(self, commit=True):
         user = super(BusinessRegistrationForm, self).save(commit=False)
         user.business_name = self.cleaned_data['business_name']

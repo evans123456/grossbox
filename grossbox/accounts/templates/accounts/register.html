@@ -5,9 +5,14 @@
 
 
 {% block head %}
+
+    {% leaflet_js plugins="forms" %}
+    {% leaflet_css plugins="forms" %}
+ 
 {% endblock %}
 
 {% block content %}
+
 <form action="" method="POST" >
     <h2>Sign Up {{type}}</h2>
         {% bootstrap_form form %}
