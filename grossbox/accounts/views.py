@@ -92,6 +92,6 @@ def registerbiker(request):
         form = forms.BikerRegistrationForm()
     context = {
         'form':form,
-        'type': 'Service Business'
+        'type': 'Biker'
     }
     return render(request,'accounts/register.html',context)

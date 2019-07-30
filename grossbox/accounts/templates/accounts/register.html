@@ -5,20 +5,58 @@
 
 
 {% block head %}
-
+<style>
+.container{
+    margin-top: 50px;
+}
+img.avatar {
+  width: 70%;
+  border-radius: 60%;
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+  margin-top: 150px;
+}
+</style>
     {% leaflet_js plugins="forms" %}
     {% leaflet_css plugins="forms" %}
  
 {% endblock %}
 
 {% block content %}
+<div class="container">
+        <div class="row">
 
-<form action="" method="POST" >
-    <h2>Sign Up {{type}}</h2>
-        {% bootstrap_form form %}
-        {% csrf_token %}
-        <input type="submit" value="Sign Up" class="btn btn-primary" >
+          <div class="col-4">
+                <img src="{% static 'main/images/img_avatar2.png' %}" alt="Avatar" class="avatar">
+          </div>
 
-</form>
+          <div class="col-8">
+                <form action="" method="POST">
+    
+                        <div class="imgcontainer">
+                         
+                        </div>
+                      
+                        <div class="container">
+                            <h2>Sign Up {{type}}</h2>
+                            {% bootstrap_form form %}
+                            {% csrf_token %}
+                            <input type="submit" value="Sign Up" class="btn btn-primary" >
+                            <label>
+                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                            </label>
+                        </div>
+                      
+                        <div class="container" style="background-color:#f1f1f1">
+                          <button type="button" class="cancelbtn">Cancel</button>
+                          <span class="psw">Forgot <a href="#">password?</a></span>
+                        </div>
+                      </form>
+          </div>
+        </div>
+</div>
+
+
 
 {% endblock %}
