@@ -6,5 +6,7 @@ app_name="home"
 
 urlpatterns = [
 	url(r'^$', views.index, name = 'index'),
+	url(r'^landing/$', views.landing, name = 'landing'),
+
     
 ]

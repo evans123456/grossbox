@@ -1,6 +1,6 @@
 from django.conf.urls import include,url
 from . import views
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,LogoutView
 
 app_name="accounts"
 
@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^registerbiz/$', views.registerbusiness, name = 'registerbusiness'),
     url(r'^biker_registration/$', views.registerbiker, name = 'registerbiker'),
     url(r'^signup-select/$', views.selection, name = 'selection'),
-    url(r'^login/$', LoginView.as_view(template_name='accounts/login.html'), name='login')
+    url(r'^login/$', LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 
 ]
