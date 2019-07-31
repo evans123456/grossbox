@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+{% load bootstrap3 %}
+{% load leaflet_tags %}
+
+{% block head %}
+<style>
+.selection{
+    margin-top: 120px
+}
+/* {% static 'main/' %} */
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="row selection">
+
+        <div class="col-md-3 featured-responsive" >
+            <div class="featured-place-wrap" style="width:100%">
+                <a href="{% url 'accounts:registerfoodsupply' %}">
+                    <img src="https://images.unsplash.com/photo-1498579397066-22750a3cb424?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="#" >
+                    <!-- <span class="featured-rating-orange">6.5</span> -->
+                    <div class="featured-title-box">
+                        <h6>Food Supply</h6>
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 featured-responsive" >
+                <div class="featured-place-wrap" style="width:100%">
+                    <a href="{% url 'accounts:service_application' %}">
+                        <img src="https://images.unsplash.com/photo-1489515229412-1f3a8f08dc34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="#" >
+                        <!-- <span class="featured-rating-orange">6.5</span> -->
+                        <div class="featured-title-box">
+                            <h6>Service Industry</h6>
+                            
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3 featured-responsive" >
+                    <div class="featured-place-wrap" style="width:100%">
+                        <a href="{% url 'accounts:registerbiker' %}">
+                            <img src="https://images.unsplash.com/photo-1445605081472-9788fb3bc02f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="#" >
+                            <!-- <span class="featured-rating-orange">6.5</span> -->
+                            <div class="featured-title-box">
+                                <h6>Biker</h6>
+                                
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 featured-responsive" >
+                        <div class="featured-place-wrap" style="width:100%">
+                            <a href="#">
+                                <img src="https://images.unsplash.com/photo-1488815812041-73ab30a49bb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" alt="#" >
+                                <!-- <span class="featured-rating-orange">6.5</span> -->
+                                <div class="featured-title-box">
+                                    <h6>Customer</h6>
+                                    
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+    </div><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

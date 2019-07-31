@@ -95,3 +95,6 @@ def registerbiker(request):
         'type': 'Biker'
     }
     return render(request,'accounts/register.html',context)
+
+def selection(request):
+    return render(request,'accounts/selection.html')
