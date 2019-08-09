@@ -13,7 +13,9 @@
 
     <form method="POST" >
         {% csrf_token %}
-        {{ form.as_p }}
+        {{form.username}}
+        {{form.password}}
+        
         <button type="submit" class="cancelbtn">Login</button>
     </form>
 </div>
